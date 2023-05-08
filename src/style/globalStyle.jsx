@@ -33,6 +33,7 @@ export const GlobalStyle = createGlobalStyle`
       display: none;
   }
   body {
+    display: block;
     touch-action: manipulation;
     line-height: 1;
     background-color: ${({ theme }) => theme.colors.sub3};
