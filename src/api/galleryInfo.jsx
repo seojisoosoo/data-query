@@ -2,10 +2,9 @@ import axios from "axios";
 
 export async function getGalleryInfo() {
   try {
-    const data = await axios.get(`${process.env.REACT_APP_BASE_URL}/jslee/gallery/goods.htm?format=json`);
-    console.log(data);
-    console.log(data.collecntions);
-    return data;
+    const data = await axios.get(`https://16b9534b-1b6f-4e0a-bd63-b966d5d571f7.mock.pstmn.io/list`);
+
+    return data.data;
   } catch (e) {
     console.log(e);
   }
