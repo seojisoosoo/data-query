@@ -3,30 +3,48 @@ import frame from "../assets/frame.svg";
 import { styled } from "styled-components";
 import { useParams } from "react-router-dom";
 import { getGalleryInfo } from "../api/galleryInfo";
+import { useQuery } from "react-query";
 
 export default function GalleryDetail() {
   const { detailId } = useParams();
-  const [gallery, setGallery] = useState([]);
+  // const [gallery, setGallery] = useState([]);
 
-  async function fetchGalleryInfo() {
-    const response = await getGalleryInfo();
-    setGallery(response[detailId - 1]);
+  const {
+    isLoading,
+    isError,
+    data: gallery,
+    error,
+  } = useQuery("gallery", getGalleryInfo, {
+    refetchOnWindowFocus: false,
+    retry: 0,
+    onSuccess: (res) => {
+      console.log(res);
+    },
+    onError: (e) => {
+      console.log(e.message);
+    },
+  });
+
+  if (isLoading) {
+    return <span>Loading...</span>;
   }
 
-  useEffect(() => {
-    fetchGalleryInfo();
-  }, []);
+  if (isError) {
+    return <span>Error: {error.message}</span>;
+  }
+
+  const { coverThumb, name, author, material } = gallery[detailId - 1];
 
   return (
     <GalleryWrapper>
       <ImgWrapper>
         <Frame src={frame} alt="프레임" />
-        <Img src={gallery.coverThumb} alt={gallery.name} />
+        <Img src={coverThumb} alt={name} />
       </ImgWrapper>
       <InfoBox>
-        <p>작품명 | {gallery.name}</p>
-        <p>작가 | {gallery.author}</p>
-        <p>재료 | {gallery.material}</p>
+        <p>작품명 | {name}</p>
+        <p>작가 | {author}</p>
+        <p>재료 | {material}</p>
       </InfoBox>
     </GalleryWrapper>
   );
