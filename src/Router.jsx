@@ -6,9 +6,8 @@ export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<GalleryPage />}>
-          <Route path=":detailId" element={<DetailPage />} />
-        </Route>
+        <Route path="/" element={<GalleryPage />} />
+        <Route path="/:detailId" element={<DetailPage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -19,7 +19,7 @@ export default function GalleryList() {
   return (
     <GalleryListWrapper>
       {gallerys.map(({ no, author, material, name, coverThumb }) => (
-        <Gallery key={no} no={no} author={author} material={material} name={name} coverThumb={coverThumb}></Gallery>
+        <Gallery key={no} no={no} author={author} material={material} name={name} coverThumb={coverThumb} />
       ))}
     </GalleryListWrapper>
   );

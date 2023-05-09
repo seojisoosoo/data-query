@@ -1,27 +1,32 @@
-import React, { useEffect } from "react";
+import { useState, useEffect } from "react";
 import frame from "../assets/frame.svg";
 import { styled } from "styled-components";
-import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { getGalleryInfo } from "../api/galleryInfo";
 
-export default function Gallery(props) {
-  const { no, author, material, name, coverThumb } = props;
-  const navigate = useNavigate();
+export default function GalleryDetail() {
+  const { detailId } = useParams();
+  const [gallery, setGallery] = useState([]);
 
-  function moveToDetail(no) {
-    console.log(no);
-    navigate(`/${no}`);
+  async function fetchGalleryInfo() {
+    const response = await getGalleryInfo();
+    setGallery(response[detailId - 1]);
   }
+
+  useEffect(() => {
+    fetchGalleryInfo();
+  }, []);
 
   return (
     <GalleryWrapper>
-      <ImgWrapper onClick={() => moveToDetail(no)}>
+      <ImgWrapper>
         <Frame src={frame} alt="프레임" />
-        <Img src={coverThumb} alt={name} />
+        <Img src={gallery.coverThumb} alt={gallery.name} />
       </ImgWrapper>
       <InfoBox>
-        <p>작품명 | {name}</p>
-        <p>작가 | {author}</p>
-        <p>재료 | {material}</p>
+        <p>작품명 | {gallery.name}</p>
+        <p>작가 | {gallery.author}</p>
+        <p>재료 | {gallery.material}</p>
       </InfoBox>
     </GalleryWrapper>
   );
@@ -44,8 +49,6 @@ const GalleryWrapper = styled.article`
   height: 45rem;
   justify-content: center;
   align-items: center;
-
-  cursor: pointer;
 `;
 
 const ImgWrapper = styled.div`
