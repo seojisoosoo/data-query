@@ -41,7 +41,7 @@ const Img = styled.img`
 
 const GalleryWrapper = styled.article`
   width: 35rem;
-  height: 45rem;
+  height: 55rem;
   justify-content: center;
   align-items: center;
 
