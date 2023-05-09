@@ -8,7 +8,6 @@ export default function Gallery(props) {
   const navigate = useNavigate();
 
   function moveToDetail(no) {
-    console.log(no);
     navigate(`/${no}`);
   }
 
