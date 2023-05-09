@@ -35,6 +35,15 @@ export default function GalleryDetail() {
     return <Error message={error.message} />;
   }
 
+  if (isError) {
+    return (
+      <>
+        <p>message={error.message}</p>
+        <Error />
+      </>
+    );
+  }
+
   const { coverThumb, name, author, material } = gallery[detailId - 1];
 
   return (

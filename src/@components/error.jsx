@@ -1,10 +1,8 @@
 import React from "react";
 import { styled } from "styled-components";
 
-export default function Error(props) {
-  const { message } = props;
-
-  return <ErrorWrapper>error : {message}</ErrorWrapper>;
+export default function Error() {
+  return <ErrorWrapper>error!</ErrorWrapper>;
 }
 
 const ErrorWrapper = styled.h1`

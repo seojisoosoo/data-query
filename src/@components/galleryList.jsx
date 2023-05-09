@@ -18,6 +18,8 @@ export default function GalleryList() {
   } = useQuery("gallerys", getGalleryInfo, {
     refetchOnWindowFocus: false,
     retry: 0,
+    suspense: true,
+    useErrorBoundary: true,
     onSuccess: (res) => {
       console.log(res);
     },
@@ -26,13 +28,18 @@ export default function GalleryList() {
     },
   });
 
-  if (isLoading) {
-    return <Loading />;
-  }
+  // if (isLoading) {
+  //   return <Loading />;
+  // }
 
-  if (isError) {
-    return <Error message={error.message} />;
-  }
+  // if (isError) {
+  //   return (
+  //     <>
+  //       <p>message={error.message}</p>
+  //       <Error />
+  //     </>
+  //   );
+  // }
 
   return (
     <GalleryListWrapper>
