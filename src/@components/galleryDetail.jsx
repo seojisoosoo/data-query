@@ -4,6 +4,8 @@ import { styled } from "styled-components";
 import { useParams } from "react-router-dom";
 import { getGalleryInfo } from "../api/galleryInfo";
 import { useQuery } from "react-query";
+import Loading from "./loading";
+import Error from "./error";
 
 export default function GalleryDetail() {
   const { detailId } = useParams();
@@ -26,11 +28,11 @@ export default function GalleryDetail() {
   });
 
   if (isLoading) {
-    return <span>Loading...</span>;
+    return <Loading />;
   }
 
   if (isError) {
-    return <span>Error: {error.message}</span>;
+    return <Error message={error.message} />;
   }
 
   const { coverThumb, name, author, material } = gallery[detailId - 1];

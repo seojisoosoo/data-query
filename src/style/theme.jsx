@@ -5,6 +5,7 @@ const colors = {
   blue: "#A6C7EF",
   grey: "#B4B4B4",
   black: "#000000",
+  white: "#ffffff",
 };
 
 const fonts = {

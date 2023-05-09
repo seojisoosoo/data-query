@@ -4,6 +4,8 @@ import Gallery from "./gallery";
 import { useState, useEffect } from "react";
 import { styled } from "styled-components";
 import { useQuery } from "react-query";
+import Loading from "./loading";
+import Error from "./error";
 
 export default function GalleryList() {
   //const [gallerys, setGallerys] = useState([]);
@@ -25,11 +27,11 @@ export default function GalleryList() {
   });
 
   if (isLoading) {
-    return <span>Loading...</span>;
+    return <Loading />;
   }
 
   if (isError) {
-    return <span>Error: {error.message}</span>;
+    return <Error message={error.message} />;
   }
 
   return (
