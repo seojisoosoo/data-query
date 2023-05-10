@@ -8,10 +8,8 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <RecoilRoot>
-          <GlobalStyle />
-          <Router />
-        </RecoilRoot>
+        <GlobalStyle />
+        <Router />
       </ThemeProvider>
     </>
   );

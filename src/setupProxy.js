@@ -8,6 +8,7 @@ module.exports = function (app) {
       target: "https://culture.seogwipo.go.kr",
 
       changeOrigin: true,
+      
     }),
   );
 };
