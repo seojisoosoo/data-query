@@ -15,6 +15,8 @@ const HomeWrapper = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
+
+  ${({ theme }) => theme.fonts.title}
 `;
 export const btnStyle = keyframes`
 	//단계 별로 변화를 주는 코드

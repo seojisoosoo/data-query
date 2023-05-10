@@ -10,7 +10,7 @@ import { useRecoilValue } from "recoil";
 export default function GalleryDetail() {
   const { detailId } = useParams();
 
-  // const gallery = useRecoilValue(gallerySelector(detailId));
+  const gallery = useRecoilValue(gallerySelector(detailId));
 
   useEffect(() => {}, []);
 

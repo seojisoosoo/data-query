@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import MainHeader from "../@components/mainHeader";
-import GalleryList from "../@components/galleryList";
+import MainHeader from "../@ReactQuerycomponents/mainHeader";
+import GalleryList from "../@ReactQuerycomponents/galleryList";
 
 //환경변수 추가
 export default function galleryPage() {

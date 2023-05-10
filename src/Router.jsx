@@ -1,7 +1,10 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import GalleryPage from "./@pages/galleryPage";
-import DetailPage from "./@pages/detailPage";
-import Home from "./@pages/Home";
+// import GalleryPage from "./@Recoilpages/galleryPage";
+// import DetailPage from "./@Recoilpages/detailPage";
+// import Home from "./@Recoilpages/Home";
+import GalleryPage from "./@ReactQuerypages/galleryPage";
+import DetailPage from "./@ReactQuerypages/detailPage";
+import Home from "./@ReactQuerypages/Home";
 
 export default function Router() {
   return (
