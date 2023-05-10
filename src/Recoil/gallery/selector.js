@@ -26,18 +26,6 @@ export const galleryAllSelector = selector({
 //   },
 // });
 
-export const atomSelector = selector({
-  key: "atomSelector",
-  get: ({ get }) => {
-    try {
-      const allGallery = get(galleryAllSelector(get(galleryState)));
-      console.log(allGallery);
-      return allGallery;
-    } catch (e) {
-      console.error(e);
-    }
-  },
-});
 // export const galleryAllSelector = selector({
 //   key: "galleryAllSelector",
 //   get: ({ get }) => {
@@ -61,14 +49,6 @@ export const gallerySelector = selectorFamily({
       }
     },
 });
-// export const gallerySelector = selectorFamily({
-//   key: "gallerySelector",
-//   get:
-//     (param) =>
-//     ({ get }) => {
-//       get(galleryState).filter((item) => item.no === parseInt(param));
-//     },
-// });
 
 export const galleryHalfSelector = selector({
   key: "galleryHalfSelector",
@@ -78,33 +58,32 @@ export const galleryHalfSelector = selector({
   },
 });
 
-export const JungSeobSelector = selectorFamily({
-  key: "JungSeobSelector",
-  get: (param) => async () => {
-    const gallery = await useGallery();
-
-    return gallery.filter((item) => item.author === param);
-    //   get(galleryAtom).filter((masterpiece) => masterpiece.author.includes(`${param}`));
-  },
-});
 // export const JungSeobSelector = selectorFamily({
 //   key: "JungSeobSelector",
-//   get:
-//     (param) =>
-//     ({ get }) => {
-//       const gallerys = get(galleryState);
-//       console.log(gallerys);
-//       return gallerys.filter((item) => item.author === param);
-//     },
-//   // get(galleryState).filter((item) => item.author === param),
-//   //   get(galleryAtom).filter((masterpiece) => masterpiece.author.includes(`${param}`));
+//   get: (param) => async () => {
+//     const gallery = await useGallery();
+
+//     return gallery.filter((item) => item.author === param);
+//     //   get(galleryAtom).filter((masterpiece) => masterpiece.author.includes(`${param}`));
+//   },
 // });
-export const oilPaintingSelector = selectorFamily({
-  key: "oilPaintingSelector",
+
+export const galleryParamSelector = selectorFamily({
+  key: "galleryParamSelector",
   get: (param) => async () => {
     const gallery = await useGallery();
 
-    return gallery.filter((item) => item.material.includes(param));
-    //   get(galleryAtom).filter((masterpiece) => masterpiece.author.includes(`${param}`));
+    switch (param) {
+      case "전체":
+        return gallery;
+      case "이중섭":
+        return gallery.filter((item) => item.author === param);
+
+      case "유채":
+        return gallery.filter((item) => item.material.includes(param));
+
+      default:
+        return gallery;
+    }
   },
 });

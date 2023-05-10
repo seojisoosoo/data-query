@@ -16,25 +16,20 @@ const HomeWrapper = styled.div`
   align-items: center;
   height: 100vh;
 `;
-const btnStyle = keyframes`
+export const btnStyle = keyframes`
 	//단계 별로 변화를 주는 코드
 	0%{
     	transform: scale(1);
     }
-
-
     50%{
     	transform: scale(1.1);
     }
-
-
-
     100%{
         transform: scale(1);
     }
 `;
 
-const EntranceBtn = styled.button`
+export const EntranceBtn = styled.button`
   width: 20rem;
   height: 10rem;
 

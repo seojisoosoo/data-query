@@ -6,11 +6,6 @@ export default function MainHeader() {
       <TitleWrapper>
         <Title>이중섭 미술관</Title>
       </TitleWrapper>
-      <BtnWrapper>
-        <BtnSelect>전체</BtnSelect>
-        <BtnSelect>이중섭 화가 작품</BtnSelect>
-        <BtnSelect>유화</BtnSelect>
-      </BtnWrapper>
     </Header>
   );
 }

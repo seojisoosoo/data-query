@@ -6,14 +6,8 @@ import { styled } from "styled-components";
 
 import { useRecoilValue, useRecoilState } from "recoil";
 import { galleryState } from "../Recoil/gallery/atoms";
-import { galleryAllSelector } from "../Recoil/gallery/selector";
-import {
-  galleryHalfSelector,
-  JungSeobSelector,
-  oilPaintingSelector,
-  gallerySelector,
-  atomSelector,
-} from "../Recoil/gallery/selector";
+
+import { galleryParamSelector } from "../Recoil/gallery/selector";
 
 export default function GalleryList() {
   // const [gallerys, setGallerys] = useState([]);
@@ -25,7 +19,7 @@ export default function GalleryList() {
 
   // const gallerys = useRecoilValue(galleryAtom);
   const [gallerys, setGallerys] = useRecoilState(galleryState);
-  console.log(galleryState);
+
   // const a = useRecoilValue(atomSelector);
   // const gallerys = useRecoilValue(oilPaintingSelector("유채"));
 
@@ -36,18 +30,7 @@ export default function GalleryList() {
     e.preventDefault;
     console.log(e.target.value);
 
-    switch (e.target.value) {
-      case "all":
-        setGallerys(galleryState);
-        break;
-      case "JungSeob":
-        setGallerys(JungSeobSelector("이중섭"));
-        break;
-      case "oilPainting":
-        setGallerys(oilPaintingSelector("유채"));
-
-        break;
-    }
+    setGallerys(galleryParamSelector(e.target.value));
   };
 
   useEffect(() => {
@@ -57,13 +40,13 @@ export default function GalleryList() {
   return (
     <GalleryListWrapper>
       <BtnWrapper>
-        <BtnSelect value="all" onClick={handleSelect}>
+        <BtnSelect value="전체" onClick={handleSelect}>
           전체
         </BtnSelect>
-        <BtnSelect value="JungSeob" onClick={handleSelect}>
+        <BtnSelect value="이중섭" onClick={handleSelect}>
           이중섭 화가 작품
         </BtnSelect>
-        <BtnSelect value="oilPainting" onClick={handleSelect}>
+        <BtnSelect value="유채" onClick={handleSelect}>
           유화
         </BtnSelect>
       </BtnWrapper>
