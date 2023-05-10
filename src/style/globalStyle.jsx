@@ -36,7 +36,7 @@ export const GlobalStyle = createGlobalStyle`
     display: block;
     touch-action: manipulation;
     line-height: 1;
-    background-color: ${({ theme }) => theme.colors.sub3};
+    background-color: #bf2420;
 
   }
   menu, ol, ul {
@@ -54,21 +54,21 @@ export const GlobalStyle = createGlobalStyle`
     border-collapse: collapse;
     border-spacing: 0;
   }
-  
+
   /* 위에가 styled-reset 내용 */
 
   * {
     box-sizing: border-box;
-  } 
+  }
   html {
     -webkit-touch-callout: none;
     -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
-    
+
     scroll-behavior: smooth;
 
     font-family: sans-serif;
     font-size: 62.5%;
-    user-select: none;    
+    user-select: none;
 
   }
   ul, li {
@@ -80,7 +80,7 @@ export const GlobalStyle = createGlobalStyle`
     color: inherit;
   }
   input, button {
-    outline: none; 
+    outline: none;
     border: none;
     background-color: transparent;
   }
@@ -90,12 +90,12 @@ export const GlobalStyle = createGlobalStyle`
   }
   input {
     appearance: none;
-    
+
     &:focus {
       outline: none;
     }
   }
-  
+
   @font-face {
     font-family: 'KOTRAHOPE';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/KOTRAHOPE.woff2') format('woff2');
