@@ -3,11 +3,56 @@ import { getGalleryInfo } from "../api/galleryInfo";
 import Gallery from "./gallery";
 import { useState, useEffect } from "react";
 import { styled } from "styled-components";
+import { useQuery } from "react-query";
+import LoadingPage from "../@ReactQuerypages/LoadingPage";
+import ErrorPage from "../@ReactQuerypages/ErrorPage";
 
 export default function GalleryList() {
+  //react-query
+  const {
+    data: gallerys,
+    isLoading,
+    isError,
+    error,
+  } = useQuery("gallerys", getGalleryInfo, {
+    refetchOnWindowFocus: false,
+    retry: 0,
+    staleTime: 1000,
+    cacheTime: 0,
+    suspense: true,
+    useErrorBoundary: true, //true로 추가!
+    onSuccess: (response) => {
+      console.log(response);
+    },
+    onError: (e) => {
+      console.log(e);
+    },
+  });
+
+  console.log(gallerys);
+
+  if (isLoading) {
+    return <LoadingPage />;
+  }
+
+  if (isError) {
+    console.log(error);
+    return <ErrorPage />;
+  }
 
   const handleSelect = (e) => {
     // handleSelect 함수를 작성해주세요
+    const categ = e.target.value;
+    switch (categ) {
+      case "이중섭":
+        gallerys.filter((gallery) => gallery.author === categ);
+        break;
+      case "유채":
+        gallerys.filter((gallery) => categ in gallery.material);
+        break;
+      default:
+        break;
+    }
   };
 
   return (
@@ -24,7 +69,7 @@ export default function GalleryList() {
         </BtnSelect>
       </BtnWrapper>
       <GalleryWrapper>
-        {gallerys.map(({ no, author, material, name, coverThumb }) => (
+        {gallerys?.map(({ no, author, material, name, coverThumb }) => (
           <Gallery key={no} no={no} author={author} material={material} name={name} coverThumb={coverThumb} />
         ))}
       </GalleryWrapper>
