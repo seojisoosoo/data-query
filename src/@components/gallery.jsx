@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 export default function Gallery(props) {
   const { no, author, material, name, coverThumb } = props;
   const navigate = useNavigate();
-
+  //git test
   function moveToDetail(no) {
     console.log(no);
     navigate(`/${no}`);
