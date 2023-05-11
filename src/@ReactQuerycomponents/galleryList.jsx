@@ -17,38 +17,30 @@ export default function GalleryList() {
   } = useQuery("gallerys", getGalleryInfo, {
     refetchOnWindowFocus: false,
     retry: 0,
-    staleTime: 1000,
+    staleTime: 0,
     cacheTime: 0,
-    suspense: true,
-    useErrorBoundary: true, //true로 추가!
-    onSuccess: (response) => {
-      console.log(response);
-    },
-    onError: (e) => {
-      console.log(e);
-    },
+    // suspense: true,
+    // useErrorBoundary: true, //true로 추가!
   });
 
-  console.log(gallerys);
+  // if (isLoading) {
+  //   return <LoadingPage />;
+  // }
 
-  if (isLoading) {
-    return <LoadingPage />;
-  }
-
-  if (isError) {
-    console.log(error);
-    return <ErrorPage />;
-  }
+  // if (isError) {
+  //   console.log(error);
+  //   return <ErrorPage />;
+  // }
 
   const handleSelect = (e) => {
     // handleSelect 함수를 작성해주세요
     const categ = e.target.value;
     switch (categ) {
       case "이중섭":
-        gallerys.filter((gallery) => gallery.author === categ);
+        console.log(gallerys.filter((gallery) => gallery.author === categ));
         break;
       case "유채":
-        gallerys.filter((gallery) => categ in gallery.material);
+        console.log(gallerys.filter((gallery) => gallery.material.includes(categ)));
         break;
       default:
         break;

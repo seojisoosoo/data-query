@@ -6,6 +6,14 @@ import "./index.css";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 const queryClient = new QueryClient();
+// const queryClient = new QueryClient({
+//   defaultOptions: {
+//     queries: {
+//       suspense: true,
+//       useErrorBoundary: true,
+//     },
+//   },
+// });
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
