@@ -3,14 +3,8 @@ import frame from "../assets/frame.svg";
 import { styled } from "styled-components";
 import { useParams } from "react-router-dom";
 
-import { gallerySelector } from "../Recoil/gallery/selector";
-
-import { useRecoilValue } from "recoil";
-
 export default function GalleryDetail() {
   const { detailId } = useParams();
-
-  const gallery = useRecoilValue(gallerySelector(detailId));
 
   useEffect(() => {}, []);
 
